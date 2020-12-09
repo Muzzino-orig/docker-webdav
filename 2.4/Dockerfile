@@ -13,7 +13,7 @@ RUN set -ex; \
      PUID="99"; \
     fi; \
     # if gid not specifed then use default gid for group users
-    if [[ -z "${PGID}" ]]; then
+    if [[ -z "${PGID}" ]]; then \
      PGID="100"; \
     fi; \
     
