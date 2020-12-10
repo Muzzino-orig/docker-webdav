@@ -53,9 +53,11 @@ RUN set -ex; \
     done; \
     #
     # Run httpd as "www-data" (instead of "daemon").
-    for i in User Group; do \
-        sed -i -e "s|^$i .*|$i www-data|" "conf/httpd.conf"; \
-    done; \
+    #for i in User Group; do \
+    #    sed -i -e "s|^$i .*|$i www-data|" "conf/httpd.conf"; \
+    #done; \
+    sed -i -e "s|^User .*|User ${PUID}|" "conf/httpd.conf"; \
+    sed -i -e "s|^Group .*|Group ${PGID}|" "conf/httpd.conf"; \
     #
     # Include enabled configs and sites.
     printf '%s\n' "Include conf/conf-enabled/*.conf" \
